@@ -18,9 +18,11 @@
 						 <li><a href="login.php">Login</a></li>
 						 <li><a href="signup.php">Sign Up</a></li>
                          <li><a href="socialmedia.php">Social Media</a></li>
-
-
-
+                        <form method="GET" action="searchresult.php">
+						<li style="float:right;margin-left:300px;"><input type="text" name="query"></li>
+						<li style="float:right;margin-left:300px;"><button type="submit">Search</button></li>
+						</form>
+						 
                     </ul>
 				</div>
 			</div>
