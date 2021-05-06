@@ -34,14 +34,14 @@ else if ($_POST['password'] !== $_POST['repassword'])
 }
 else {
       $username = $validated_data['username'];
-      $checkusername = "SELECT * FROM users WHERE username = '$username'";
+      $checkusername = "SELECT * FROM user WHERE username = '$username'";
       $run_check = mysqli_query($conn , $checkusername) or die(mysqli_error($conn));
       $countusername = mysqli_num_rows($run_check); 
       if ($countusername > 0 ) {
     echo  "<center><font color='red'>Username is already taken! try a different one</font></center>";
 }
 $email = $validated_data['email'];
-$checkemail = "SELECT * FROM users WHERE email = '$email'";
+$checkemail = "SELECT * FROM user WHERE email = '$email'";
       $run_check = mysqli_query($conn , $checkemail) or die(mysqli_error($conn));
       $countemail = mysqli_num_rows($run_check); 
       if ($countemail > 0 ) {
@@ -53,11 +53,10 @@ $checkemail = "SELECT * FROM users WHERE email = '$email'";
       $email = $validated_data['email'];
       $pass = $validated_data['password'];
       $password = password_hash("$pass" , PASSWORD_DEFAULT);
-      $role = $_POST['role'];
-      $course = $_POST['course'];
       $gender = $_POST['gender'];
       $joindate = date("F j, Y");
-      $query = "INSERT INTO users(username,name,email,password,role,course,gender,joindate,token) VALUES ('$username' , '$name' , '$email', '$password' , '$role', '$course', '$gender' , '$joindate' , '' )";
+      echo "reached here";
+      $query = "INSERT INTO user(username,name,email,password,gender) VALUES ('$username' , '$name' , '$email', '$password', '$gender')";
       $result = mysqli_query($conn , $query) or die(mysqli_error($conn));
       if (mysqli_affected_rows($conn) > 0) { 
         echo "<script>alert('SUCCESSFULLY REGISTERED');
